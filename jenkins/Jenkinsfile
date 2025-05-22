@@ -7,14 +7,14 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout: cloning the repository') {
             steps {
                 echo 'git clone'
                 checkout scm
             }
         }
 
-        stage('Docker Build') {
+        stage('Building docker image') {
             steps {
                 script {
                     def services = [
@@ -32,7 +32,7 @@ pipeline {
             }
         }
 
-        stage('Docker Push') {
+        stage('Docker image to docker hub') {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
@@ -46,5 +46,6 @@ pipeline {
                 }
             }
         }
+        stage('Kubernetes Orchestration')
     }
 }
