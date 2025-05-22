@@ -46,6 +46,12 @@ pipeline {
                 }
             }
         }
-        stage('Kubernetes Orchestration')
+        stage('Kubernetes Orchestration'){
+            steps{
+                script{
+                    echo 'new step'
+                }
+            }
+        }
     }
 }
