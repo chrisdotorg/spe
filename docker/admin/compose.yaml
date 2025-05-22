@@ -1,0 +1,122 @@
+# Docker compose for ubuntu mail system implemented on docker 
+
+version: '3.8'
+services:
+
+# postfix smtp server en qualité de mta 
+
+  mta:
+    container_name: postfix
+    restart: unless-stopped
+    #build: ./postfix/
+    image: postfix
+    ports:
+      - 2500:25
+    networks:
+      reseau1:
+        ipv4_address:
+          172.20.0.54
+
+# roundcube server en qualité de mua 
+
+  mua:
+    container_name: roundcube
+    restart: unless-stopped
+    image: roundcube/roundcubemail
+    environment:
+      ROUNDCUBEMAIL_DEFAULT_HOST: dovecot
+      ROUNDCUBEMAIL_DEFAULT_PORT: 143  
+      ROUNDCUBEMAIL_SMTP_SERVER: postfix 
+      ROUNDCUBEMAIL_SMTP_PORT: 25
+      ROUNDCUBEMAIL_DB_TYPE: mysql 
+      ROUNDCUBEMAIL_DB_HOST: mysql
+      ROUNDCUBEMAIL_DB_PORT: 3306
+      ROUNDCUBEMAIL_DB_USER: user
+      ROUNDCUBEMAIL_DB_PASSWORD: user
+      ROUNDCUBEMAIL_DB_NAME: messagerie
+    ports:
+      - 8003:80
+    networks:
+      reseau1:
+        ipv4_address:
+          172.20.0.55
+    depends_on:
+      - mysql
+      - mta
+
+#Dovecot server en qualité de mda
+
+  mda:
+    container_name: dovecot
+    restart: unless-stopped
+    #build: ./dovecot/
+    image: dovecot
+    ports: 
+      - 14300:143
+      - 11000:110
+    volumes:
+      - mailsave:/home/vmail
+    networks:
+      reseau1:
+        ipv4_address:
+          172.20.0.56
+
+# Partie base de données du service de messagerie
+
+  mysql:
+    container_name: mysql
+    image: mysql
+    restart: unless-stopped
+    ports:
+      - 33060:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_DATABASE: messagerie
+    volumes:
+      - mysqlvolume:/var/lib/mysql
+    networks:
+      reseau1:
+        ipv4_address:
+          172.20.0.50
+          
+ # mise en place de phpmyadmin
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    restart: unless-stopped
+    image: phpmyadmin
+    ports:
+    - 8000:80
+    environment:
+      PMA_ARBITRARY: 1
+    networks:
+      reseau1:
+        ipv4_address:
+          172.20.0.51
+  
+# mise en place de l'outil web d'administation du serveur de messagerie
+
+  administation:
+    container_name: admin
+    restart: unless-stopped
+    image: admin 
+    ports:
+    - 8004:80
+    networks:
+      reseau1:
+        ipv4_address:
+          172.20.0.58
+# création du résau pour joindre les divers serveurs qui sont dans le système de messagerie
+
+networks:
+  reseau1:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.48/28
+          gateway: 172.20.0.49
+volumes:
+  mysqlvolume:
+  mailsave:

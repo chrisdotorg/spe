@@ -1,0 +1,5 @@
+user = user
+password = user
+hosts = 172.20.0.50
+dbname = messagerie
+query = SELECT Destination FROM alias WHERE Source='%s'
