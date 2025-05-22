@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials'
+        IMAGE_PREFIX = 'richdotcom101'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'git clone'
+                checkout scm
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                script {
+                    def services = [
+                        [name: 'postfix', path: 'docker/postfix'],
+                        [name: 'dovecot', path: 'docker/dovecot'],
+                        [name: 'admin', path: 'docker/admin']
+                    ]
+
+                    for (svc in services) {
+                        def imageTag = "${IMAGE_PREFIX}/${svc.name}:latest"
+                        echo "building ${imageTag} from ${svc.path}"
+                        docker.build(imageTag, svc.path)
+                    }
+                }
+            }
+        }
+
+        stage('Docker Push') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                        def services = ['postfix', 'dovecot', 'admin']
+                        for (svc in services) {
+                            def imageTag = "${IMAGE_PREFIX}/${svc}:latest"
+                            echo "Pushing ${imageTag} to docker hub "
+                            docker.image(imageTag).push()
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
