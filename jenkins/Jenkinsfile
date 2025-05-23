@@ -49,15 +49,6 @@ pipeline {
             }
         }
 
-        stage('Requirement checkout for ansible') {
-            steps {
-                sh '''
-                sudo apt-get update
-                sudo apt-get install -y ansible python3-pip
-                pip3 install docker-compose || true
-                '''
-            }
-        }
         stage('Deploy with Ansible') {
             steps {
                 sh '''
@@ -65,7 +56,7 @@ pipeline {
                 '''
             }
         }
-        stage('Kubernetes Orchestratio'){
+        stage('Adding monitoring'){
             steps{
                 script{
                     echo 'new step'
