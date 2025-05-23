@@ -4,6 +4,8 @@ pipeline {
     environment {
         DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials'
         IMAGE_PREFIX = 'richdotcom101'
+        INVENTORY_FILE = 'ansible/inventory.ini'
+        PLAYBOOK_FILE = 'ansible/deploy.yml'
     }
 
     stages {
@@ -46,12 +48,37 @@ pipeline {
                 }
             }
         }
-        stage('Kubernetes Orchestration'){
+
+        stage('Requirement checkout for ansible') {
+            steps {
+                sh '''
+                sudo apt-get update
+                sudo apt-get install -y ansible python3-pip
+                pip3 install docker-compose || true
+                '''
+            }
+        }
+        stage('Deploy with Ansible') {
+            steps {
+                sh '''
+                ansible-playbook -i ${INVENTORY_FILE} ${PLAYBOOK_FILE}
+                '''
+            }
+        }
+        stage('Kubernetes Orchestratio'){
             steps{
                 script{
                     echo 'new step'
                 }
             }
+        }
+    }
+        post {
+        success {
+            echo "deployment successful"
+        }
+        failure {
+            echo "deployment failed"
         }
     }
 }

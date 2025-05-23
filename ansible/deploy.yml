@@ -1,0 +1,65 @@
+---
+- name: Déploiement de l'infrastructure mail sur la machine locale
+  hosts: mailserver
+  become: yes
+  tasks:
+
+    - name: Mettre à jour les paquets
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Installer les dépendances nécessaires
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+
+    - name: Ajouter la clé GPG officielle de Docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Ajouter le dépôt Docker
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        state: present
+        filename: docker
+
+    - name: Installer Docker CE
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: yes
+
+    - name: Installer pip3
+      apt:
+        name: python3-pip
+        state: present
+
+    - name: Installer docker-compose via pip3
+      pip:
+        name: docker-compose
+        executable: pip3
+
+    - name: Vérifier que Docker est actif
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Copier le projet local (docker-compose.yml, Dockerfiles, init.sql, etc.)
+      copy:
+        src: ./mailproject/
+        dest: /opt/mailproject/
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_id }}"
+        mode: 0755
+
+    - name: Lancer les conteneurs avec Docker Compose
+      command: docker-compose up -d
+      args:
+        chdir: /opt/mailproject/
