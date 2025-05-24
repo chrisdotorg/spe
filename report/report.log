@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.4.18)  24 MAY 2025 11:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.4.18)  24 MAY 2025 12:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -678,24 +678,24 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -753,7 +753,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 43.
+Package hyperref Info: Link coloring OFF on input line 44.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -766,9 +766,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count326
 )
-LaTeX Info: Redefining \ref on input line 43.
-LaTeX Info: Redefining \pageref on input line 43.
-LaTeX Info: Redefining \nameref on input line 43.
+LaTeX Info: Redefining \ref on input line 44.
+LaTeX Info: Redefining \pageref on input line 44.
+LaTeX Info: Redefining \nameref on input line 44.
 
 (./report.out) (./report.out)
 \@outlinefile=\write4
@@ -780,7 +780,7 @@ Package caption Info: End \AtBeginDocument code.
 <logo.jpeg, id=67, 200.75pt x 200.75pt>
 File: logo.jpeg Graphic file (type jpg)
 <use logo.jpeg>
-Package pdftex.def Info: logo.jpeg  used on input line 45.
+Package pdftex.def Info: logo.jpeg  used on input line 46.
 (pdftex.def)             Requested size: 113.24197pt x 113.24323pt.
  [1
 
@@ -799,15 +799,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [2]
-<diagram.png, id=83, 1027.84pt x 631.35875pt>
-File: diagram.png Graphic file (type png)
-<use diagram.png>
-Package pdftex.def Info: diagram.png  used on input line 73.
-(pdftex.def)             Requested size: 407.66833pt x 250.40996pt.
+<diagram.jpeg, id=97, 455.45157pt x 324.46219pt>
+File: diagram.jpeg Graphic file (type jpg)
+<use diagram.jpeg>
+Package pdftex.def Info: diagram.jpeg  used on input line 75.
+(pdftex.def)             Requested size: 407.66833pt x 290.42897pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 74.
+(caption)                particular \caption on input line 76.
 See the caption package documentation for explanation.
 
 
@@ -819,33 +819,33 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [3]
-<git.jpg, id=89, 250.9375pt x 105.39375pt>
+<git.jpg, id=103, 250.9375pt x 105.39375pt>
 File: git.jpg Graphic file (type jpg)
 <use git.jpg>
-Package pdftex.def Info: git.jpg  used on input line 93.
+Package pdftex.def Info: git.jpg  used on input line 95.
 (pdftex.def)             Requested size: 71.13188pt x 29.87509pt.
-<docker.jpg, id=90, 250.9375pt x 63.23625pt>
+<docker.jpg, id=104, 250.9375pt x 63.23625pt>
 File: docker.jpg Graphic file (type jpg)
 <use docker.jpg>
-Package pdftex.def Info: docker.jpg  used on input line 98.
+Package pdftex.def Info: docker.jpg  used on input line 100.
 (pdftex.def)             Requested size: 71.13188pt x 17.92505pt.
-<compose.jpg, id=91, 501.875pt x 275.0275pt>
+<compose.jpg, id=105, 501.875pt x 275.0275pt>
 File: compose.jpg Graphic file (type jpg)
 <use compose.jpg>
-Package pdftex.def Info: compose.jpg  used on input line 103.
+Package pdftex.def Info: compose.jpg  used on input line 105.
 (pdftex.def)             Requested size: 71.13188pt x 38.9778pt.
-<ansible.jpg, id=92, 250.9375pt x 309.155pt>
+<ansible.jpg, id=106, 250.9375pt x 309.155pt>
 File: ansible.jpg Graphic file (type jpg)
 <use ansible.jpg>
-Package pdftex.def Info: ansible.jpg  used on input line 108.
+Package pdftex.def Info: ansible.jpg  used on input line 110.
 (pdftex.def)             Requested size: 71.13188pt x 87.63364pt.
-<jenkins.jpg, id=93, 250.9375pt x 81.30376pt>
+<jenkins.jpg, id=107, 250.9375pt x 81.30376pt>
 File: jenkins.jpg Graphic file (type jpg)
 <use jenkins.jpg>
-Package pdftex.def Info: jenkins.jpg  used on input line 113.
+Package pdftex.def Info: jenkins.jpg  used on input line 115.
 (pdftex.def)             Requested size: 71.13188pt x 23.0465pt.
 
-Overfull \hbox (18.10239pt too wide) in paragraph at lines 122--123
+Overfull \hbox (18.10239pt too wide) in paragraph at lines 124--125
  [][] 
  []
 
@@ -857,7 +857,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4 <./diagram.png>]
+[4 <./diagram.jpeg>]
+<tree.png, id=112, 758.835pt x 978.65625pt>
+File: tree.png Graphic file (type png)
+<use tree.png>
+Package pdftex.def Info: tree.png  used on input line 146.
+(pdftex.def)             Requested size: 362.37569pt x 467.36038pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 147.
+See the caption package documentation for explanation.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -875,7 +886,97 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6]
+[6 <./tree.png>]
+<admin.png, id=125, 1940.24875pt x 977.6525pt>
+File: admin.png Graphic file (type png)
+<use admin.png>
+Package pdftex.def Info: admin.png  used on input line 166.
+(pdftex.def)             Requested size: 362.37569pt x 182.59334pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 167.
+See the caption package documentation for explanation.
+
+<compose.png, id=126, 969.6225pt x 808.01875pt>
+File: compose.png Graphic file (type png)
+<use compose.png>
+Package pdftex.def Info: compose.png  used on input line 173.
+(pdftex.def)             Requested size: 362.37569pt x 301.98296pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 174.
+See the caption package documentation for explanation.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[7 <./admin.png>]
+<pipeline.png, id=133, 1919.17pt x 1013.7875pt>
+File: pipeline.png Graphic file (type png)
+<use pipeline.png>
+Package pdftex.def Info: pipeline.png  used on input line 182.
+(pdftex.def)             Requested size: 362.37569pt x 191.41504pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 183.
+See the caption package documentation for explanation.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[8 <./compose.png> <./pipeline.png>]
+<ansible.png, id=140, 1940.24875pt x 977.6525pt>
+File: ansible.png Graphic file (type png)
+<use ansible.png>
+Package pdftex.def Info: ansible.png  used on input line 190.
+(pdftex.def)             Requested size: 362.37569pt x 182.59334pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 191.
+See the caption package documentation for explanation.
+
+<dockerps.png, id=141, 1944.26375pt x 308.15125pt>
+File: dockerps.png Graphic file (type png)
+<use dockerps.png>
+Package pdftex.def Info: dockerps.png  used on input line 196.
+(pdftex.def)             Requested size: 362.37569pt x 57.43025pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 197.
+See the caption package documentation for explanation.
+
+<test.png, id=142, 1944.26375pt x 1004.75375pt>
+File: test.png Graphic file (type png)
+<use test.png>
+Package pdftex.def Info: test.png  used on input line 202.
+(pdftex.def)             Requested size: 362.37569pt x 187.25635pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 203.
+See the caption package documentation for explanation.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[9 <./ansible.png> <./dockerps.png>]
 No file report.bbl.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -885,15 +986,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[7] (./report.aux)
+[10 <./test.png>] (./report.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 7E65743712A5DEAD751C6F37B43395B4;2697.
  ) 
 Here is how much of TeX's memory you used:
- 22503 strings out of 480247
- 420104 string characters out of 5896151
- 690224 words of memory out of 5000000
- 40047 multiletter control sequences out of 15000+600000
+ 22568 strings out of 480247
+ 420998 string characters out of 5896151
+ 690578 words of memory out of 5000000
+ 40097 multiletter control sequences out of 15000+600000
  476189 words of font info for 52 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,12n,89p,709b,718s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -901,10 +1005,10 @@ Here is how much of TeX's memory you used:
 600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on report.pdf (7 pages, 158704 bytes).
+Output written on report.pdf (10 pages, 700634 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
- 168 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 183 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 203 words of extra memory for PDF output out of 10000 (max. 10000000)
 

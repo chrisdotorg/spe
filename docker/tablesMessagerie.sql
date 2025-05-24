@@ -1,7 +1,7 @@
-/* Script de création des tables de la base de données de messagerie 
-by rich.com this 06-09-2022 at 03:52 pm */
+/* Script to create tables in the database
+ */
 
-/*  creation de la table des comptes utilisateurs */
+/*  user accounts table */
 
 CREATE TABLE `messagerie`.`comptes` ( 
     `AccountId` INT NOT NULL AUTO_INCREMENT,  
@@ -13,14 +13,14 @@ CREATE TABLE `messagerie`.`comptes` (
     FOREIGN KEY (DomainId) REFERENCES domaines(DomainId) ON DELETE CASCADE 
 ) ENGINE = InnoDB;
 
-/* Création de la table des domaines  */
+/* domains table  */
 
 CREATE TABLE `messagerie`.`domaines` ( 
     `DomainId` INT NOT NULL AUTO_INCREMENT , 
     `DomainName` VARCHAR(50) NOT NULL , PRIMARY KEY (`DomainId`)
 ) ENGINE = InnoDB;
 
-/* creation de la table des alias  */
+/* alias table  */
 
 CREATE TABLE `messagerie`.`alias` (
     `AliasId` INT NOT NULL AUTO_INCREMENT, 

@@ -15,6 +15,7 @@
 \usepackage{amsmath}
 \usepackage{float}
 \usepackage{tikz}
+\usepackage{xcolor}
 \usetikzlibrary{positioning}
 \pagestyle{fancy}
 \fancyhf{}
@@ -59,6 +60,7 @@ The architecture consists of several modular components :
     \item Dovecot as MDA (Mail Delivery Agent).  Dovecot delivers mail to users' mailboxes and allows them to retrieve mail using IMAP and POP3. It also provides authentication services for Postfix, including integration with MySQL for virtual users.
 
     \item MySQL database : The database stores virtual user information, including email addresses, hashed passwords, and domain associations. It also provides authentication support for both Postfix and Dovecot.
+    We added phpmyadmin for GUI access in case needed.
 
     \item A web administration tool: A lightweight web interface built with PHP allows administrators to create, modify, and delete user accounts. It communicates directly with the MySQL database.
 
@@ -70,8 +72,8 @@ All components are containerized using Docker and orchestrated using Docker Comp
 Next, we have a picture of the system diagram in a starred topology network
  
 \begin{center}
-    \includegraphics[width=0.9\textwidth]{diagram.png}
-    \captionof{figure}{System Architecture Diagram} \label{diagram.png}
+    \includegraphics[width=0.9\textwidth]{diagram.jpeg}
+    \captionof{figure}{System Architecture Diagram} \label{diagram.jpeg}
 \end{center}
 
 \section{Devops tool chain de deployment strategy}
@@ -137,37 +139,71 @@ This section details the steps taken to implement the system. It includes:
     \item deployment using Ansible
 \end{itemize}
 \subsection{Setting up the initial project structure}
+at this level, what we did  is to create a folder for the project. We named this folder, Project. in this folder, we initiated a git repository. 
+We assembled the files related to each system in a sub folder. all the docker related things are in the docker folder, ansible, jenkins same. 
+here is a picture of how it is organized
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{tree.png}
+    \captionof{figure}{Project folder structure} \label{tree.png}
+\end{center}
+github repository link: \textcolor{blue}{\href{https://github.com/chrisdotorg/spe.git}{GitHub Repository}}.
 \subsection{Postfix's configuration}
 To configure postfix, we created a dockerfile using ubuntu as base image. we included 5 configuration files: 
 \begin{itemize}
-    \item main.cf :
-    \item master.cf :
-    \item database-alias.cf :
-    \item database-user.cf :
-    \item database-domains.cf :
-    \item Dockerfile:
+    \item main.cf : include configurations of smtp relay
+    \item master.cf : define transport configurations
+    \item database-alias.cf : posfix config file to link with the database
+    \item database-user.cf : postfix config file to link the user management with the database
+    \item database-domains.cf : postfix config file to link the domains management with the database
+    \item Dockerfile: the dockerfile to create the docker image of the system
 \end{itemize}
 \subsection{Dovecot configuration}
 Like Postfix, we did the same thing for dovecot. including the configuration files as well as the dockerfile
 \subsection{Creation of the web admin tool}
 This phase was crucial and Time consuming. Basically, Postfixadmin is the best tool to do it since it is a web based tool build for postfix administration. But in our case, the docker image available wasn't compatible with our system and creating our own image of postfix admin is was not working well. So we decided to create a web admin tool to manage (create, delete) user accounts and domains.
 It is a web based tool created using php programming language
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{admin.png}
+    \captionof{figure}{Pipeline  } \label{ansible.png}
+\end{center}
 \subsection{Integration with Roundcube and Mysql using docker compose }
 To bring all the services together, we created a docker compose file to bing all the systems. we created a volume to persist the data, and a personalized network on docker to assign static ipv4 adresses to the containers and input those IPV4 adresses in the configuration files 
 of Dovecot and Postfix.  We created some sql files to init the database on mysql and input some data to test our configurations
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{compose.png}
+    \captionof{figure}{A picture of one side of the docker compose file} \label{compose.png}
+\end{center}
+We built the docker image of postfix, dovecot and admin separately before including them into the docker compose
 \subsection{Pipeline creation using Jenkins}
 We needed a jenkins pipeline to build automatically the project and ensure the continous integration as well as the continous deployment. we manage the project using git. 
 after that, we created a pipeline in jenkins. The build job is triggered by Github SCM polling. we therefore created a Github hook to support this. Everytime we push the code to github, the build job starts. 
 here is a picture of the pipeline built
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{pipeline.png}
+    \captionof{figure}{Pipeline  } \label{pipeline.png}
+\end{center}
 \subsection{Deployment with Ansible}
 To ensure the deployment, we created an ansible playbook in which we check the existence of docker as well as python on the target system. The target system is our local system here since. The playbook and the inventory files are in the ansible folder of the project. 
+Here is a picture of our pipeline being built. we can get from the output of the pipeline stage concerning the ansible deployment
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{ansible.png}
+    \captionof{figure}{Ansible Deployment} \label{ansible deployment.png}
+\end{center}
 \section{test}
 After building successfully, we can check that our system is deployed using docker ps command. 
-
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{dockerps.png}
+    \captionof{figure}{Check up to see the available containers } \label{dockerpss.png}
+\end{center}
 After this, we log in with two credentials and test the sending and reception of mails on the system
 
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{test.png}
+    \captionof{figure}{Check up to see the available containers } \label{test.png}
+\end{center}
 
-This ends the tests. 
+We can see that there is a mail exchange between two users. leila@rich.com and boston@arlis.org
 
 \section{Conclusion}
 The project delivered a fully functional and secure mail server infrastructure with automated deployment using containerization and DevOps tools. The use of Postfix, Dovecot, and Roundcube provided a reliable core email system. MySQL and the PHP admin interface simplified user management. DevOps automation using Docker, Ansible, and Jenkins ensured repeatability and reduced manual intervention.
