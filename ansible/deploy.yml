@@ -1,15 +1,15 @@
 ---
-- name: Déploiement de l'infrastructure mail sur la machine locale
+- name: deployment on the local system
   hosts: mailserver
   become: yes
   tasks:
 
-    - name: Mettre à jour les paquets
+    - name: Mettre updating packets
       apt:
         update_cache: yes
         upgrade: dist
 
-    - name: Installer les dépendances nécessaires
+    - name: Installing the required dependencies
       apt:
         name:
           - apt-transport-https
@@ -18,48 +18,41 @@
           - software-properties-common
         state: present
 
-    - name: Ajouter la clé GPG officielle de Docker
+    - name: Adding docker GPG apt_key
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
 
-    - name: Ajouter le dépôt Docker
+    - name: adding docker 
       apt_repository:
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
         state: present
         filename: docker
 
-    - name: Installer Docker CE
+    - name: Install Docker CE
       apt:
         name: docker-ce
         state: latest
         update_cache: yes
 
-    - name: Installer pip3
+    - name: Install pip3
       apt:
         name: python3-pip
         state: present
 
-    - name: Installer docker-compose via pip3
+    - name: install docker compose
       pip:
         name: docker-compose
         executable: pip3
 
-    - name: Vérifier que Docker est actif
+    - name: check up that docker is running
       service:
         name: docker
         state: started
         enabled: yes
 
-    - name: Copier le projet local (docker-compose.yml, Dockerfiles, init.sql, etc.)
-      copy:
-        src: ./mailproject/
-        dest: /opt/mailproject/
-        owner: "{{ ansible_user_id }}"
-        group: "{{ ansible_user_id }}"
-        mode: 0755
-
-    - name: Lancer les conteneurs avec Docker Compose
-      command: docker-compose up -d
+    - name: Starting the containers with docker compose
+      command: docker compose up -d
       args:
-        chdir: /opt/mailproject/
+        chdir: /home/chrisorg/Labs/Project/docker
+
