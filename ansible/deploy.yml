@@ -3,14 +3,7 @@
   hosts: mailserver
   become: yes
   tasks:
-
-    - name: Allow the current user to use sudo without password
-      lineinfile:
-        path: /etc/sudoers.d/{{ ansible_user }}
-        line: "{{ ansible_user }} ALL=(ALL) NOPASSWD:ALL"
-        create: yes
-        mode: '0440'
-
+  
     - name: Update package lists and upgrade system
       apt:
         update_cache: yes
