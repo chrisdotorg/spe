@@ -56,13 +56,6 @@ pipeline {
                 '''
             }
         }
-        stage('Adding monitoring'){
-            steps{
-                script{
-                    echo 'new step'
-                }
-            }
-        }
     }
         post {
         success {
