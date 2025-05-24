@@ -1,22 +1,15 @@
 ---
-- name: Deployment of the mail infrastructure on the remote system
+- name: deployment on the local system
   hosts: mailserver
   become: yes
   tasks:
 
-    - name: Allow the current user to use sudo without password
-      lineinfile:
-        path: /etc/sudoers.d/{{ ansible_user }}
-        line: "{{ ansible_user }} ALL=(ALL) NOPASSWD:ALL"
-        create: yes
-        mode: '0440'
-
-    - name: Update package lists and upgrade system
+    - name: Mettre updating packets
       apt:
         update_cache: yes
         upgrade: dist
 
-    - name: Install required dependencies
+    - name: Installing the required dependencies
       apt:
         name:
           - apt-transport-https
@@ -25,12 +18,12 @@
           - software-properties-common
         state: present
 
-    - name: Add Docker GPG key
+    - name: Adding docker GPG apt_key
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
 
-    - name: Add Docker APT repository
+    - name: adding docker 
       apt_repository:
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
         state: present
@@ -47,18 +40,19 @@
         name: python3-pip
         state: present
 
-    - name: Install docker-compose via pip3
+    - name: install docker compose
       pip:
         name: docker-compose
         executable: pip3
 
-    - name: Ensure Docker is running and enabled
+    - name: check up that docker is running
       service:
         name: docker
         state: started
         enabled: yes
 
-    - name: Start containers with Docker Compose
+    - name: Starting the containers with docker compose
       command: docker compose up -d
       args:
         chdir: /home/chrisorg/Labs/Project/docker
+
